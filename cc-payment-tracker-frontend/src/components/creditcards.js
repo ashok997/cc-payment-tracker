@@ -8,13 +8,24 @@ class CreditCards {
 
     initBindingsAndEventListeners() {
         this.creditCardsContainer = document.getElementById("credit-cards-container")
+        this.newCreditCardName = document.getElementById("card_name")
+        this.newCreditCardLastFour = document.getElementById("last_four")
+        this.newCreditCardExpDate = document.getElementById("exp_date")
+        this.newCreditCardBalance = document.getElementById("balance")
         this.creditCardForm = document.getElementById("new-credit-card-form")
-        this.creditCardForm.addEventListener('submit', this.createCreditCard)
+        this.creditCardForm.addEventListener('submit', this.createCreditCard.bind(this))
     }
 
     createCreditCard(e) {
         e.preventDefault()
-        console.log('creating new card')
+        const credit_card = {
+            card_name: this.newCreditCardName.value,
+            last_four: this.newCreditCardLastFour.value,
+            exp_date: this.newCreditCardExpDate.value,
+            balance: this.newCreditCardBalance.value
+        }
+
+        this.adapter.createCreditCard(credit_card)
     }
 
     fetchAndLoadCreditCards() {

@@ -6,8 +6,16 @@ class CreditCardsAdapter {
     getCreditCards() {
         return fetch(this.baseUrl).then(res => res.json())
     }
-    // getCreditCard(id) {
-    //     return fetch(`${this.baseUrl}/${id}`).then(res => res.json()
-    //     )
-    // }
+
+    createCreditCard(credit_card) {
+        return fetch(this.baseUrl, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({ credit_card }),
+        })
+    }
+
 }
