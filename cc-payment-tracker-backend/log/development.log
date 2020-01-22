@@ -36,3 +36,72 @@ FOREIGN KEY ("credit_card_id")
   [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" LIMIT ?[0m  [["LIMIT", 11]]
   [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-22 08:12:11 -0600
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CreditCardsController#index as HTML
+  [1m[36mCreditCard Load (0.1ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 25ms (Views: 21.1ms | ActiveRecord: 1.7ms | Allocations: 14737)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-01-22 08:12:11 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-22 08:40:24 -0600
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CreditCardsController#index as HTML
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 59ms (Views: 45.4ms | ActiveRecord: 1.7ms | Allocations: 14771)
+
+
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-22 08:41:43 -0600
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (0.1ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 1947)
+
+
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-22 10:14:50 -0600
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 51ms (Views: 45.2ms | ActiveRecord: 2.5ms | Allocations: 14774)
+
+
