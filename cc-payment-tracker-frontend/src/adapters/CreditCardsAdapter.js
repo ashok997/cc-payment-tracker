@@ -4,7 +4,10 @@ class CreditCardsAdapter {
     }
 
     getCreditCards() {
-        return fetch(this.baseUrl).then(res => res.json()
-        )
+        return fetch(this.baseUrl).then(res => res.json())
     }
+    // getCreditCard(id) {
+    //     return fetch(`${this.baseUrl}/${id}`).then(res => res.json()
+    //     )
+    // }
 }
