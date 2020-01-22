@@ -6,4 +6,8 @@ class CreditCard {
         this.exp_date = creditcardJSON.exp_date
         this.balance = creditcardJSON.balance
     }
+
+    renderLi() {
+        return `<ul><li>${this.card_name}</li><li>${this.last_four}</li><li>${this.exp_date}</li><li>${this.balance}</li></ul>`
+    }
 }

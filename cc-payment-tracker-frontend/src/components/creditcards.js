@@ -2,7 +2,19 @@ class CreditCards {
     constructor() {
         this.creditcards = []
         this.adapter = new CreditCardsAdapter()
+        this.initBindingsAndEventListeners()
         this.fetchAndLoadCreditCards()
+    }
+
+    initBindingsAndEventListeners() {
+        this.creditCardsContainer = document.getElementById("credit-cards-container")
+        this.creditCardForm = document.getElementById("new-credit-card-form")
+        this.creditCardForm.addEventListener('submit', this.createCreditCard)
+    }
+
+    createCreditCard(e) {
+        e.preventDefault()
+        console.log('creating new card')
     }
 
     fetchAndLoadCreditCards() {
@@ -16,7 +28,6 @@ class CreditCards {
     }
 
     render() {
-        const creditCardsContainer = document.getElementById("credit-cards-container")
-        creditCardsContainer.innerHTML = this.creditcards.map(card => `<ul><li>${card.card_name}</li><li>${card.last_four}</li><li>${card.balance}</li></ul>`).join('')
+        this.creditCardsContainer.innerHTML = this.creditcards.map(card => card.renderLi()).join('')
     }
 }
