@@ -25,10 +25,10 @@ class CreditCards {
             balance: this.newCreditCardBalance.value
         }
 
-        this.adapter.createCreditCard(credit_card).then(credit_card => {
-            console.log(credit_card)
-            // this.creditcards.push(new CreditCard(cc))
-            // this.render
+        this.adapter.createCreditCard(credit_card).then(cc => {
+            //console.log(credit_card)
+            this.creditcards.push(new CreditCard(cc))
+            this.render()
         })
     }
 

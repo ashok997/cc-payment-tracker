@@ -6,7 +6,6 @@ class Api::V1::CreditCardsController < ApplicationController
     end
 
     def create
-        binding.pry
         credit_card = CreditCard.create(credit_card_params)
         render json: credit_card
     end
@@ -24,7 +23,7 @@ class Api::V1::CreditCardsController < ApplicationController
 
     private
         def credit_card_params
-            params.require(:credit_card).permit(:card_name)
+            params.require(:credit_card).permit(:card_name, :last_four, :exp_date, :balance)
         end
 
 end
