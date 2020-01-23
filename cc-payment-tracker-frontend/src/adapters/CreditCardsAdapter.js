@@ -16,6 +16,7 @@ class CreditCardsAdapter {
             },
             body: JSON.stringify({ credit_card }),
         })
+            .then(res => res.json())
     }
 
 }
