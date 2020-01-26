@@ -19,4 +19,16 @@ class CreditCardsAdapter {
             .then(res => res.json())
     }
 
+    // createTransacion() {
+    //     return fetch(this.baseUrl / +'${credit_card.id}/transactions', {
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json"
+    //         },
+    //         body: JSON.stringify({ credit_card }),
+    //     })
+    //         .then(res => res.json())
+    // }
+
 }

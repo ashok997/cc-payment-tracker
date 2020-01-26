@@ -8,6 +8,7 @@ class CreditCards {
 
     initBindingsAndEventListeners() {
         this.creditCardsContainer = document.getElementById("credit-cards-container")
+        this.transactionsContainer = document.getElementById("transactions-container")
         this.newCreditCardName = document.getElementById("card_name")
         this.newCreditCardLastFour = document.getElementById("last_four")
         this.newCreditCardExpDate = document.getElementById("exp_date")
@@ -22,11 +23,11 @@ class CreditCards {
             card_name: this.newCreditCardName.value,
             last_four: this.newCreditCardLastFour.value,
             exp_date: this.newCreditCardExpDate.value,
-            balance: this.newCreditCardBalance.value
+            balance: this.newCreditCardBalance.value,
+
         }
 
         this.adapter.createCreditCard(credit_card).then(cc => {
-            //console.log(credit_card)
             this.creditcards.push(new CreditCard(cc))
             this.render()
         })
@@ -43,6 +44,9 @@ class CreditCards {
     }
 
     render() {
-        this.creditCardsContainer.innerHTML = this.creditcards.map(card => card.renderLi()).join('')
+        this.creditCardsContainer.innerHTML = this.creditcards.map(card => card.renderCard()).join('')
+
     }
+
+
 }
