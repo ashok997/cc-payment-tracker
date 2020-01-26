@@ -16,13 +16,17 @@ class CreditCard {
                     <li>${this.balance}</li>
                 </ul>
                 `
+
     }
 
 
     renderCardTransactions() {
+        let allTrans;
         this.transaction.forEach(function (trans) {
-            return `<li> Paid: ${trans.amount}  Date :${trans.date} </li>`
+            //console.log(trans.amount + trans.date)
+            allTrans += `<li> Paid: ${trans.amount}  Date :${trans.date} </li>`
         })
+        return allTrans
     }
 
     rednerNewTransactionForm() {
@@ -31,10 +35,7 @@ class CreditCard {
 
 
     renderAll() {
-        return `
-            ${this.renderCard()}
-            ${this.renderCardTransactions()} 
-            `
+        return ` ${this.renderCard()} ${this.renderCardTransactions()} `
     }
 
 
@@ -43,5 +44,5 @@ class CreditCard {
     //the on submit event will take the card id from the button to make a post req. to a nested route
     //ie - if someone clicks the button with id of 4 we render a form that when submitted makes a post request
     //to creditcards/4/transaction/create <- transaction will be nested under credit cards in the router
-    //fetch(`baseURL/${id from our button}/transactions/create`)
+    //fetch(`baseURL / ${ id from our button } /transactions/create`)
 }

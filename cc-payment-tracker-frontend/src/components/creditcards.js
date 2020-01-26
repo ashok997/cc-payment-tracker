@@ -37,15 +37,19 @@ class CreditCards {
         this.adapter.getCreditCards()
             .then(creditcards => {
                 creditcards.forEach(card => this.creditcards.push(new CreditCard(card)))
+                //console.log(this.creditcards)
             })
             .then(() => {
                 this.render()
             })
     }
 
-    render() {
-        this.creditCardsContainer.innerHTML = this.creditcards.map(card => card.renderCard()).join('')
 
+
+
+    render() {
+        this.creditCardsContainer.innerHTML = this.creditcards.map(card => card.renderAll()).join('')
+        // this.transactionsContainer.innerHTML = this.creditcards.map(card => card.renderCardTransactions()).join('')
     }
 
 
