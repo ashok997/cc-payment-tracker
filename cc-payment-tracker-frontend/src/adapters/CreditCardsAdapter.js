@@ -1,10 +1,10 @@
 class CreditCardsAdapter {
     constructor() {
-        this.baseUrl = "http://localhost:3000/api/v1/credit_cards"
+        this.baseUrl = "http://localhost:3000/api/v1/"
     }
 
     getCreditCards() {
-        return fetch(this.baseUrl).then(res => res.json())
+        return fetch(this.baseUrl + 'credit_cards').then(res => res.json())
     }
 
     createCreditCard(credit_card) {
@@ -20,19 +20,17 @@ class CreditCardsAdapter {
     }
 
 
-    createTransaction() {
-        console.log('transaction')
+
+    createTransaction(transaction) {
+        return fetch(this.baseUrl + 'transactions', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({ transaction }),
+        })
+            .then(res => res.json())
     }
-    // createTransacion() {
-    //     return fetch(this.baseUrl / +'${credit_card.id}/transactions', {
-    //         method: 'POST',
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Accept": "application/json"
-    //         },
-    //         body: JSON.stringify({ credit_card }),
-    //     })
-    //         .then(res => res.json())
-    // }
 
 }

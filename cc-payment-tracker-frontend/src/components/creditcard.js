@@ -9,13 +9,12 @@ class CreditCard {
     }
 
     renderCard() {
-        return `<ul-data-cardId=${this.id}>
+        return `<ul>
                     <li>${this.card_name}</li>
                     <li>${this.last_four}</li>
                     <li>${this.exp_date}</li>
                     <li>${this.balance}</li>
-                </ul>
-                `
+                </ul>`
 
     }
 
@@ -30,7 +29,7 @@ class CreditCard {
     }
 
     renderNewTransactionForm() {
-        return `<form id="new-transaction-form">
+        return `<form data-card-id="${this.id}">
             <div class="input-field">
                 <label for="amount">Amount </label>    
                 <input type="number" step="0.01" name="amount" id="amount">
@@ -50,12 +49,10 @@ class CreditCard {
 
 
     renderAll() {
-        return ` ${this.renderCard()} 
+        return `${this.renderCard()} 
                 ${this.renderCardTransactions()} 
                 ${this.renderNewTransactionForm()}
-                ${this.renderDeleteCard()}
-                `
-
+                ${this.renderDeleteCard()}`
     }
 
 }

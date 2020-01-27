@@ -19,12 +19,12 @@
    License: none (public domain)
 */
 
-html, body, button, h2, div, span, applet, object, iframe, blockquote, pre,
+html, body, button, h2, span, applet, object, iframe, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
-dl, dt, dd, ol, ul, li,
+dl, dt, dd, ol, ul, li, div,
 fieldset, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
@@ -32,7 +32,7 @@ figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 5;
-	padding: 0;
+	padding: 10;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
@@ -57,10 +57,6 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 
 h2 {
     max-width: 500px;
@@ -71,6 +67,7 @@ h2 {
     font-family: 'Courier New', Courier, monospace;
     font-size: 36px;
     justify-content: center;
+    margin: 0 auto;
  }
 
 input {
@@ -80,6 +77,7 @@ input {
 label {
     color: rgb(21, 120, 185);
     font-size: 24px;
+    justify-content: center;
     font-family: 'Courier New', Courier, monospace;
  }
 
@@ -91,6 +89,7 @@ label {
    text-align: center;
    
  }
+
 
  form{
 	max-width: 500px;
@@ -104,6 +103,7 @@ label {
 button{
     background: #f4f7f8;
     display: flex;
+    margin: 0 auto;
     justify-content: center;
     font-family: 'Courier New', Courier, monospace;
 }

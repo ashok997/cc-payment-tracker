@@ -12,12 +12,7 @@ class CreditCards {
         this.newCreditCardLastFour = document.getElementById("last_four")
         this.newCreditCardExpDate = document.getElementById("exp_date")
         this.newCreditCardBalance = document.getElementById("balance")
-
-
-
-        this.newForm = document.getElementById("new-transaction-from")
-
-        //this.newForm.addEventListener('submit', this.createNewTransaction)
+        this.creditCardsContainer.addEventListener('submit', this.createNewTransaction.bind(this))
 
         this.creditCardForm = document.getElementById("new-credit-card-form")
         this.creditCardForm.addEventListener('submit', this.createCreditCard.bind(this))
@@ -51,13 +46,19 @@ class CreditCards {
             })
     }
 
-    createNewTransaction() {
-        // e.preventDefault()
-        // const transaction = {
-        //     amount: 100.25,
-        //     date: "2020-01-25"
-        // }
-        console.log("posting new transaction")
+    createNewTransaction(e) {
+        e.preventDefault()
+
+        const transaction = {
+            amount: e.target.querySelector("#amount").value,
+            date: e.target.querySelector("#date").value,
+            credit_card_id: e.target.getAttribute("data-card-id")
+        }
+        console.log(transaction)
+        debugger;
+        this.adapter.createTransaction(transaction).then(trans => {
+            console.log(trans)
+        })
     }
 
     deleteCard() {
