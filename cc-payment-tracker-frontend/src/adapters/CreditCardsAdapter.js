@@ -19,6 +19,10 @@ class CreditCardsAdapter {
             .then(res => res.json())
     }
 
+
+    createTransaction() {
+        console.log('transaction')
+    }
     // createTransacion() {
     //     return fetch(this.baseUrl / +'${credit_card.id}/transactions', {
     //         method: 'POST',

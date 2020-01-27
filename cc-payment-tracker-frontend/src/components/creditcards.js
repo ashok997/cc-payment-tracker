@@ -8,13 +8,20 @@ class CreditCards {
 
     initBindingsAndEventListeners() {
         this.creditCardsContainer = document.getElementById("credit-cards-container")
-        this.transactionsContainer = document.getElementById("transactions-container")
         this.newCreditCardName = document.getElementById("card_name")
         this.newCreditCardLastFour = document.getElementById("last_four")
         this.newCreditCardExpDate = document.getElementById("exp_date")
         this.newCreditCardBalance = document.getElementById("balance")
+
+
+
+        this.newForm = document.getElementById("new-transaction-from")
+
+        //this.newForm.addEventListener('submit', this.createNewTransaction)
+
         this.creditCardForm = document.getElementById("new-credit-card-form")
         this.creditCardForm.addEventListener('submit', this.createCreditCard.bind(this))
+
     }
 
     createCreditCard(e) {
@@ -42,6 +49,19 @@ class CreditCards {
             .then(() => {
                 this.render()
             })
+    }
+
+    createNewTransaction() {
+        // e.preventDefault()
+        // const transaction = {
+        //     amount: 100.25,
+        //     date: "2020-01-25"
+        // }
+        console.log("posting new transaction")
+    }
+
+    deleteCard() {
+        console.log("delete this card")
     }
 
 

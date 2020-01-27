@@ -21,7 +21,7 @@ class CreditCard {
 
 
     renderCardTransactions() {
-        let allTrans;
+        let allTrans = ''
         this.transaction.forEach(function (trans) {
             //console.log(trans.amount + trans.date)
             allTrans += `<li> Paid: ${trans.amount}  Date : ${trans.date} </li>`
@@ -29,23 +29,33 @@ class CreditCard {
         return allTrans
     }
 
-
-
-    renderAll() {
-        return ` ${this.renderCard()} ${this.renderCardTransactions()}
-          
-            <form id="new-transaction-form">
+    renderNewTransactionForm() {
+        return `<form id="new-transaction-form">
             <div class="input-field">
                 <label for="amount">Amount </label>    
                 <input type="number" step="0.01" name="amount" id="amount">
             </div>
-            <div class="input-field">
+                <div class="input-field">
                 <label for="date">Date </label>    
                 <input type="date" name="date" id="date">
             </div>
             <input type="submit" value="Record Transaction">
         </form>`
-        //<button onclick="newTransaction()">Record Transaction</button>`
+
+    }
+
+    renderDeleteCard() {
+        return `<button name="delete" onclick="deleteCard()">Delete This Card </button>`
+    }
+
+
+    renderAll() {
+        return ` ${this.renderCard()} 
+                ${this.renderCardTransactions()} 
+                ${this.renderNewTransactionForm()}
+                ${this.renderDeleteCard()}
+                `
+
     }
 
 }
