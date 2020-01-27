@@ -48,16 +48,16 @@ class CreditCards {
 
     createNewTransaction(e) {
         e.preventDefault()
-
         const transaction = {
             amount: e.target.querySelector("#amount").value,
             date: e.target.querySelector("#date").value,
             credit_card_id: e.target.getAttribute("data-card-id")
         }
-        console.log(transaction)
-        debugger;
         this.adapter.createTransaction(transaction).then(trans => {
-            console.log(trans)
+            const ccId = e.target.getAttribute("data-card-id")
+            this.creditcards.find(x => x.id == ccId).transaction.push(trans)
+            this.render()
+
         })
     }
 
