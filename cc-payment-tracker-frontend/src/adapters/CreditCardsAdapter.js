@@ -8,7 +8,7 @@ class CreditCardsAdapter {
     }
 
     createCreditCard(credit_card) {
-        return fetch(this.baseUrl, {
+        return fetch(this.baseUrl + 'credit_cards', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -19,7 +19,18 @@ class CreditCardsAdapter {
             .then(res => res.json())
     }
 
+    // deletCreditCard(credit_card_id) {
+    //     return fetch(this.baseUrl + 'credit_cards', {
+    //         method: 'DELETE',
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json"
+    //         },
+    //         body: JSON.stringify({ credit_card_id }),
+    //     })
+    //         .then(res => res.json())
 
+    // }
 
     createTransaction(transaction) {
         return fetch(this.baseUrl + 'transactions', {

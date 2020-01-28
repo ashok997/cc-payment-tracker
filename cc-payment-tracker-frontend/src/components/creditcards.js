@@ -26,7 +26,6 @@ class CreditCards {
             last_four: this.newCreditCardLastFour.value,
             exp_date: this.newCreditCardExpDate.value,
             balance: this.newCreditCardBalance.value,
-
         }
 
         this.adapter.createCreditCard(credit_card).then(cc => {
@@ -43,6 +42,8 @@ class CreditCards {
             })
             .then(() => {
                 this.render()
+            }).catch(function (error) {
+                console.log(error.message);
             })
     }
 

@@ -21,10 +21,14 @@ class CreditCard {
 
     renderCardTransactions() {
         let allTrans = ''
-        this.transaction.forEach(function (trans) {
-            //console.log(trans.amount + trans.date)
-            allTrans += `<li> Paid: ${trans.amount}  Date : ${trans.date} </li>`
-        })
+        if (this.transaction === undefined) {
+            allTrans = '<li> Next step start making payments </li>'
+        }
+        else {
+            this.transaction.forEach(function (trans) {
+                allTrans += `<li> Paid: ${trans.amount}  Date : ${trans.date} </li>`
+            })
+        }
         return allTrans
     }
 
