@@ -54,19 +54,22 @@ class CreditCards {
             date: e.target.querySelector("#date").value,
             credit_card_id: e.target.getAttribute("data-card-id")
         }
+
+        const ccId = e.target.getAttribute("data-card-id")
+        const selectedCard = this.creditcards.find(card => card.id == ccId)
+        const newBalance = selectedCard.balance - transaction.amount
+        debugger;
         this.adapter.createTransaction(transaction).then(trans => {
-            const ccId = e.target.getAttribute("data-card-id")
-            this.creditcards.find(x => x.id == ccId).transaction.push(trans)
+            selectedCard.transaction.push(trans)
+            selectedCard.balance = newBalance
             this.render()
 
         })
     }
 
-    deleteCard() {
-        console.log("delete this card")
-    }
-
-
+    // deleteCard() {
+    //     console.log("delete this card")
+    // }
 
 
     render() {
