@@ -58,12 +58,11 @@ class CreditCards {
         const ccId = e.target.getAttribute("data-card-id")
         const selectedCard = this.creditcards.find(card => card.id == ccId)
         const newBalance = selectedCard.balance - transaction.amount
-        debugger;
+
         this.adapter.createTransaction(transaction).then(trans => {
             selectedCard.transaction.push(trans)
             selectedCard.balance = newBalance
             this.render()
-
         })
     }
 
