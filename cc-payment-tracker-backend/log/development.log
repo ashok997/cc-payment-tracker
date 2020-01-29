@@ -10336,3 +10336,290 @@ Processing by Api::V1::CreditCardsController#index as */*
 Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 1.8ms | Allocations: 11162)
 
 
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-29 14:41:20 -0600
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 2]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 3]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 4]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 5]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 6]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 7]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 8]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 85ms (Views: 53.7ms | ActiveRecord: 2.1ms | Allocations: 24021)
+
+
+Started POST "/api/v1/transactions" for ::1 at 2020-01-29 14:41:38 -0600
+Processing by Api::V1::TransactionsController#create as JSON
+  Parameters: {"transaction"=>{"amount"=>"20.00", "date"=>"2020-01-27", "credit_card_id"=>"3"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards" WHERE "credit_cards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "date", "credit_card_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["amount", 20.0], ["date", "2020-01-27"], ["credit_card_id", 3], ["created_at", "2020-01-29 20:41:38.602737"], ["updated_at", "2020-01-29 20:41:38.602737"]]
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[35m (71.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+  [1m[36mCreditCard Update (0.5ms)[0m  [1m[33mUPDATE "credit_cards" SET "balance" = ?, "updated_at" = ? WHERE "credit_cards"."id" = ?[0m  [["balance", 8969.99], ["updated_at", "2020-01-29 20:41:38.677412"], ["id", 3]]
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+  [1m[35m (8.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+Completed 200 OK in 93ms (Views: 0.7ms | ActiveRecord: 81.4ms | Allocations: 6063)
+
+
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-29 14:41:42 -0600
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (1.0ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 2]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 3]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 4]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 5]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 6]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 7]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 8]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 30ms (Views: 26.8ms | ActiveRecord: 2.4ms | Allocations: 11331)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "credit_cards"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "credit_cards" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "card_name" varchar, "last_four" integer, "exp_date" varchar, "balance" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "amount" float, "date" date, "credit_card_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_transactions_on_credit_card_id" ON "transactions" ("credit_card_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "amount" float DEFAULT NULL, "date" date DEFAULT NULL, "credit_card_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_atransactions_on_credit_card_id" ON "atransactions" ("credit_card_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","amount","date","credit_card_id","created_at","updated_at")
+                     SELECT "id","amount","date","credit_card_id","created_at","updated_at" FROM "transactions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer NOT NULL PRIMARY KEY, "amount" float DEFAULT NULL, "date" date DEFAULT NULL, "credit_card_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d41a14cc5b"
+FOREIGN KEY ("credit_card_id")
+  REFERENCES "credit_cards" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_transactions_on_credit_card_id" ON "transactions" ("credit_card_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "transactions" ("id","amount","date","credit_card_id","created_at","updated_at")
+                     SELECT "id","amount","date","credit_card_id","created_at","updated_at" FROM "atransactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atransactions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200122135257)[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200118202145);
+
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-01-29 20:42:21.289212"], ["updated_at", "2020-01-29 20:42:21.289212"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "afec9cd0b447f4117c372a7ab5e1e0a52c0d1173"], ["created_at", "2020-01-29 20:42:21.311661"], ["updated_at", "2020-01-29 20:42:21.311661"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "credit_cards"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "credit_cards" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "card_name" varchar, "last_four" integer, "exp_date" varchar, "balance" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "amount" float, "date" date, "credit_card_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_transactions_on_credit_card_id" ON "transactions" ("credit_card_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "amount" float DEFAULT NULL, "date" date DEFAULT NULL, "credit_card_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_atransactions_on_credit_card_id" ON "atransactions" ("credit_card_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","amount","date","credit_card_id","created_at","updated_at")
+                     SELECT "id","amount","date","credit_card_id","created_at","updated_at" FROM "transactions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer NOT NULL PRIMARY KEY, "amount" float DEFAULT NULL, "date" date DEFAULT NULL, "credit_card_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d41a14cc5b"
+FOREIGN KEY ("credit_card_id")
+  REFERENCES "credit_cards" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_transactions_on_credit_card_id" ON "transactions" ("credit_card_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "transactions" ("id","amount","date","credit_card_id","created_at","updated_at")
+                     SELECT "id","amount","date","credit_card_id","created_at","updated_at" FROM "atransactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atransactions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200122135257)[0m
+  [1m[35m (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200118202145);
+
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-01-29 20:42:21.355492"], ["updated_at", "2020-01-29 20:42:21.355492"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-01-29 20:42:21.361391"], ["key", "environment"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "afec9cd0b447f4117c372a7ab5e1e0a52c0d1173"], ["created_at", "2020-01-29 20:42:21.377618"], ["updated_at", "2020-01-29 20:42:21.377618"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/credit_cards" for ::1 at 2020-01-29 14:43:07 -0600
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CreditCardsController#create as JSON
+  Parameters: {"credit_card"=>{"card_name"=>"Amex Blue", "last_four"=>"1234", "exp_date"=>"Jun 2020", "balance"=>"9898.99"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:9:in `create'
+  [1m[36mCreditCard Create (1.0ms)[0m  [1m[32mINSERT INTO "credit_cards" ("card_name", "last_four", "exp_date", "balance", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["card_name", "Amex Blue"], ["last_four", 1234], ["exp_date", "Jun 2020"], ["balance", 9898.99], ["created_at", "2020-01-29 20:43:07.859507"], ["updated_at", "2020-01-29 20:43:07.859507"]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:9:in `create'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:9:in `create'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:10:in `create'
+Completed 200 OK in 19ms (Views: 6.7ms | ActiveRecord: 3.4ms | Allocations: 11359)
+
+
+Started POST "/api/v1/transactions" for ::1 at 2020-01-29 14:43:33 -0600
+Processing by Api::V1::TransactionsController#create as JSON
+  Parameters: {"transaction"=>{"amount"=>"98.99", "date"=>"2020-01-01", "credit_card_id"=>"1"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards" WHERE "credit_cards"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "date", "credit_card_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["amount", 98.99], ["date", "2020-01-01"], ["credit_card_id", 1], ["created_at", "2020-01-29 20:43:33.648035"], ["updated_at", "2020-01-29 20:43:33.648035"]]
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+  [1m[36mCreditCard Update (0.4ms)[0m  [1m[33mUPDATE "credit_cards" SET "balance" = ?, "updated_at" = ? WHERE "credit_cards"."id" = ?[0m  [["balance", 9800.0], ["updated_at", "2020-01-29 20:43:33.653734"], ["id", 1]]
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 6.7ms | Allocations: 9599)
+
+
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-29 14:43:39 -0600
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (0.4ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.7ms | Allocations: 1986)
+
+
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-29 14:46:49 -0600
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.4ms | Allocations: 1953)
+
+
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-29 14:46:50 -0600
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1953)
+
+
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-29 14:46:53 -0600
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (0.1ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.3ms | Allocations: 1935)
+
+
+Started POST "/api/v1/credit_cards" for ::1 at 2020-01-29 14:47:09 -0600
+Processing by Api::V1::CreditCardsController#create as JSON
+  Parameters: {"credit_card"=>{"card_name"=>"Diners Club ", "last_four"=>"8989", "exp_date"=>"Jul 2020", "balance"=>"7898.78"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:9:in `create'
+  [1m[36mCreditCard Create (0.4ms)[0m  [1m[32mINSERT INTO "credit_cards" ("card_name", "last_four", "exp_date", "balance", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["card_name", "Diners Club "], ["last_four", 8989], ["exp_date", "Jul 2020"], ["balance", 7898.78], ["created_at", "2020-01-29 20:47:09.454704"], ["updated_at", "2020-01-29 20:47:09.454704"]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:9:in `create'
+  [1m[35m (13.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:9:in `create'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 2]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:10:in `create'
+Completed 200 OK in 19ms (Views: 1.5ms | ActiveRecord: 14.1ms | Allocations: 3170)
+
+
+Started POST "/api/v1/transactions" for ::1 at 2020-01-29 14:47:26 -0600
+Processing by Api::V1::TransactionsController#create as JSON
+  Parameters: {"transaction"=>{"amount"=>"89.99", "date"=>"2020-01-27", "credit_card_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards" WHERE "credit_cards"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "date", "credit_card_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["amount", 89.99], ["date", "2020-01-27"], ["credit_card_id", 2], ["created_at", "2020-01-29 20:47:26.791113"], ["updated_at", "2020-01-29 20:47:26.791113"]]
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/transactions_controller.rb:10:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+  [1m[36mCreditCard Update (0.5ms)[0m  [1m[33mUPDATE "credit_cards" SET "balance" = ?, "updated_at" = ? WHERE "credit_cards"."id" = ?[0m  [["balance", 7808.79], ["updated_at", "2020-01-29 20:47:26.795641"], ["id", 2]]
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/credit_card.rb:7:in `update_balance'
+Completed 200 OK in 32ms (Views: 0.4ms | ActiveRecord: 3.3ms | Allocations: 5500)
+
+
+Started GET "/api/v1/credit_cards" for ::1 at 2020-01-29 14:48:04 -0600
+Processing by Api::V1::CreditCardsController#index as */*
+  [1m[36mCreditCard Load (11.8ms)[0m  [1m[34mSELECT "credit_cards".* FROM "credit_cards"[0m
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 1]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."credit_card_id" = ?[0m  [["credit_card_id", 2]]
+  ↳ app/controllers/api/v1/credit_cards_controller.rb:5:in `index'
+Completed 200 OK in 23ms (Views: 11.0ms | ActiveRecord: 12.1ms | Allocations: 3125)
+
+
