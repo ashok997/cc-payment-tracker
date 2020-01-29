@@ -1,24 +1,35 @@
-# README
+# Activation Tracker
+Welcome to Credit Card Payment Tracker! This project was built as the requirement of Flatiron School project.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### Installation
+Go to your favorite console and then clone the project:
+```
+ $ git clone https://github.com/ashok997/cc-payment-tracker.git
+```
+And go into the project direcotry:
+```
+  $ cd cc-payment-tracker-backend
+```
+then execute:
+```
+$ rails s 
+```
+the open another terminal and go into the project direcotry
+```
+$ cd cc-payment-tracker-fronend
+```
+then execute:
+```
+open index.html
 
-* Ruby version
+### Usage
+The application will allow user to keep track of payments made on credit cards.
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+License
+The project is available as open source under the terms of the MIT License.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Code of Conduct
+Everyone interacting in the ActivationTracker project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
