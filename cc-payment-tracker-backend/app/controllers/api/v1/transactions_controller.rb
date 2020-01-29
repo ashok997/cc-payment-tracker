@@ -8,6 +8,7 @@ class Api::V1::TransactionsController < ApplicationController
 
     def create
         transaction= Transaction.create(transaction_params)
+        transaction.credit_card.update_balance(transaction_params[:amount])
         render json: transaction
     end
 

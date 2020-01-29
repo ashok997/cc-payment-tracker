@@ -1,4 +1,4 @@
-# Activation Tracker
+# Credit Card Payment Tracker
 Welcome to Credit Card Payment Tracker! This project was built as the requirement of Flatiron School project.
 
 
@@ -22,6 +22,7 @@ $ cd cc-payment-tracker-fronend
 then execute:
 ```
 open index.html
+```
 
 ### Usage
 The application will allow user to keep track of payments made on credit cards.

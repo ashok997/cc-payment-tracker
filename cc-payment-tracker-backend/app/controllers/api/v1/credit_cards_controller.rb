@@ -7,7 +7,7 @@ class Api::V1::CreditCardsController < ApplicationController
 
     def create
         credit_card = CreditCard.create(credit_card_params)
-        render json: credit_card
+        render json: credit_card, include: :transactions
     end
 
     def update
