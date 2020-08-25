@@ -1,5 +1,5 @@
 class CreditCard < ApplicationRecord
-    has_many :transactions
+    has_many :transactions, dependent: :destroy
 
     def update_balance(amount)
         new_balance = self.balance - amount.to_f
