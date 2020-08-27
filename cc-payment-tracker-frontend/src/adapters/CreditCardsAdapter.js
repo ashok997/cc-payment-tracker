@@ -32,30 +32,14 @@ class CreditCardsAdapter {
             .then(res => res.json())
     }
 
-    updateCard(new_balance, credit_card_id) {
-        return fetch(this.baseUrl + 'transactions/' + `${credit_card_id}`, {
-            method: 'PATCH',
+    deletCreditCard(credit_card_id) {
+        return fetch(this.baseUrl + `credit_cards/${credit_card_id}`, {
+            method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({ new_balance }),
         })
-            .then(res => res.json())
     }
-
-
-    // deletCreditCard(credit_card_id) {
-    //     return fetch(this.baseUrl + 'credit_cards', {
-    //         method: 'DELETE',
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Accept": "application/json"
-    //         },
-    //         body: JSON.stringify({ credit_card_id }),
-    //     })
-    //         .then(res => res.json())
-
-    // }
 
 }

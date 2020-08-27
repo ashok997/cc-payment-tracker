@@ -21,14 +21,11 @@ class CreditCard {
 
     renderCardTransactions() {
         let allTrans = ''
-        if (this.transaction === undefined) {
-            allTrans = '<li> Next step start making payments </li>'
-        }
-        else {
-            this.transaction.forEach(function (trans) {
-                allTrans += `<li> Paid: ${trans.amount}  Date : ${trans.date} </li>`
-            })
-        }
+
+        this.transaction.forEach(function (trans) {
+            allTrans += `<li> Paid: ${trans.amount}  Date : ${trans.date} </li>`
+        })
+
         return allTrans
     }
 
@@ -48,8 +45,9 @@ class CreditCard {
     }
 
     renderDeleteCard() {
-        return `<button name="delete" onclick="deleteCard()">Delete This Card </button>`
+        return `<button name="delete" data-id="${this.id}">Delete This Card </button>`
     }
+
 
 
     renderAll() {
